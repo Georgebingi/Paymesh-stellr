@@ -203,7 +203,10 @@ pub fn add_group_member(
     }
 
     // Add new member
-    details.members.push_back(GroupMember { address, percentage });
+    details.members.push_back(GroupMember {
+        address,
+        percentage,
+    });
 
     // Validate total percentage after adding
     validate_members(&details.members)?;
@@ -218,7 +221,10 @@ pub fn add_group_member(
         .persistent()
         .get(&members_key)
         .unwrap_or(Vec::new(&env));
-    members.push_back(GroupMember { address, percentage });
+    members.push_back(GroupMember {
+        address,
+        percentage,
+    });
     env.storage().persistent().set(&members_key, &members);
 
     Ok(())
