@@ -204,7 +204,7 @@ pub fn add_group_member(
 
     // Add new member
     details.members.push_back(GroupMember {
-        address,
+        address: address.clone(),
         percentage,
     });
 
@@ -222,7 +222,7 @@ pub fn add_group_member(
         .get(&members_key)
         .unwrap_or(Vec::new(&env));
     members.push_back(GroupMember {
-        address,
+        address: address.clone(),
         percentage,
     });
     env.storage().persistent().set(&members_key, &members);
